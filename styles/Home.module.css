@@ -7,6 +7,12 @@
   align-items: center;
 }
 
+.graphql {
+  border: solid 1px silver;
+  padding: 32px;
+  margin: 16px;
+}
+
 .main {
   padding: 5rem 0;
   flex: 1;
