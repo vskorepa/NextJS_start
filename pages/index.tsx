@@ -1,27 +1,27 @@
-import Link from "next/link";
-import React, { useState } from "react";
+import Link from 'next/link'
+import React, { useState } from 'react'
 import {
   useViewerQuery,
   useUpdateNameMutation,
   ViewerDocument,
-} from "../lib/viewer.graphql";
-import { initializeApollo } from "../lib/apollo";
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import { Menu } from "../components/menu";
+} from '../lib/viewer.graphql'
+import { initializeApollo } from '../lib/apollo'
+import Head from 'next/head'
+import styles from '../styles/Home.module.css'
+import { Menu } from '../components/menu'
 
 const Index = () => {
-  const { data, loading } = useViewerQuery();
-  const [newName, setNewName] = useState("");
-  const [updateNameMutation] = useUpdateNameMutation();
+  const { data, loading, error } = useViewerQuery()
+  const [newName, setNewName] = useState('')
+  const [updateNameMutation] = useUpdateNameMutation()
 
   const onChangeName = () => {
     updateNameMutation({
       variables: {
         name: newName,
       },
-    });
-  };
+    })
+  }
 
   return (
     <div className={styles.container}>
@@ -36,15 +36,15 @@ const Index = () => {
         </h1>
 
         <div className={styles.graphql}>
-          {loading ? (
-            "LOADING.."
-          ) : (
+          {loading && <>Loading....</>}
+          {error && <>Error</>}
+          {data && (
             <>
-              You're signed in as {data!.viewer.name} and you're{" "}
-              {data!.viewer.status}. Go to the{" "}
+              You're signed in as {data.viewer.name} and you're{' '}
+              {data.viewer.status}. Go to the{' '}
               <Link href="/about">
                 <a>about</a>
-              </Link>{" "}
+              </Link>{' '}
               page.
               <div>
                 <input
@@ -62,7 +62,7 @@ const Index = () => {
         </div>
 
         <p className={styles.description}>
-          Get started by editing{" "}
+          Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
         </p>
 
@@ -103,26 +103,26 @@ const Index = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Powered by{' '}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
     </div>
-  );
-};
+  )
+}
 
 export async function getStaticProps() {
-  const apolloClient = initializeApollo();
+  const apolloClient = initializeApollo()
 
   await apolloClient.query({
     query: ViewerDocument,
-  });
+  })
 
   return {
     props: {
       initialApolloState: apolloClient.cache.extract(),
     },
-  };
+  }
 }
 
-export default Index;
+export default Index
