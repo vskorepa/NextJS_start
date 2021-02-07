@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   useViewerQuery,
   useUpdateNameMutation,
@@ -8,6 +8,7 @@ import {
 import { initializeApollo } from "../lib/apollo";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import { Menu } from "../components/menu";
 
 const Index = () => {
   const { data, loading } = useViewerQuery();
@@ -28,7 +29,7 @@ const Index = () => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Menu />
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
