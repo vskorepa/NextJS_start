@@ -5,11 +5,14 @@ import { spacings } from './theme'
 const Wrapper = styled.div`
   height: 50px;
   width: 100%;
-  background-color: black;
+  background-color: #f35252;
   color: white;
-  padding: ${spacings.s};
+  padding: ${spacings.xs};
 `
+type MenuProps = {
+  content: string
+}
 
-export const Menu: FC = () => {
-  return <Wrapper>Menu</Wrapper>
+export const Menu: FC<MenuProps> = ({ content }) => {
+  return <Wrapper>{content}</Wrapper>
 }

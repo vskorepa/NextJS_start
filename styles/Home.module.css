@@ -1,9 +1,10 @@
 .container {
+  padding-top: 5%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* display: grid;
+  grid-template-columns: auto 25% 25% 25% auto;
+  grid-template-rows: auto 25% 25% 25% auto;
+  gap: 20px; */
 }
 
 .graphql {
@@ -84,6 +85,24 @@
   max-width: 800px;
   margin-top: 3rem;
 }
+.menuImg {
+  width: auto;
+  height: auto;
+  justify-self: center;
+  align-self: center;
+  grid-row: 1;
+}
+.menuLabel {
+  text-align: center;
+  margin: 0;
+  grid-row: 2;
+  background-color: #ff0000;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding-bottom: 10px;
+
+  color: white;
+}
 
 .card {
   margin: 1rem;
@@ -124,4 +143,17 @@
     width: 100%;
     flex-direction: column;
   }
+}
+.nav {
+  position: fixed;
+  background-color: #282c34;
+  display: grid;
+  width: 100%;
+  min-height: 4%;
+  padding: 5px;
+  align-items: center;
+  font-size: smaller;
+  color: white;
+  outline: none;
+  border: none;
 }
