@@ -8,8 +8,8 @@ import {
 import { initializeApollo } from '../lib/apollo'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { Menu } from '../components/menu'
-import { MenuButton } from '../components/menuButton'
+// import { Menu } from '../components/menu'
+import { MenuButton } from '../components/atomic/MenuButton'
 
 const Index = () => {
   const { data, loading, error } = useViewerQuery()
@@ -31,9 +31,9 @@ const Index = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <nav className={styles.nav}>
-        <MenuButton content="MENU"></MenuButton>
-        <MenuButton content="Sklad 1"></MenuButton>
-        <MenuButton content="Sklad 2"></MenuButton>
+        <MenuButton imgLink="/img/logo" label="MENU"></MenuButton>
+        <MenuButton imgLink="/img/logo" label="Sklad 1"></MenuButton>
+        <MenuButton imgLink="/img/logo" label="Sklad 2"></MenuButton>
       </nav>
       <main className={styles.main}>
         <h1 className={styles.title}>
