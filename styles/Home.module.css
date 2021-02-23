@@ -85,9 +85,6 @@
   margin: 0;
   grid-gap: 1rem;
 }
-.site {
-  background-color: rgba(139, 139, 139, 0.397);
-}
 .menuImg {
   width: auto;
   height: auto;
@@ -194,4 +191,10 @@
 .btn:active {
   transform: translate(0, 1px);
   box-shadow: 0rem 0.1rem rgba(0, 0, 0, 0.1);
+}
+.RowCode {
+  text-align: center;
+}
+.RowCount {
+  text-align: center;
 }

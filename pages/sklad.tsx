@@ -10,8 +10,9 @@ const fakeData: Array<Row> = [
     code: 'TPRdafsd78PT',
     count: '7',
     description: 'Black toner do WC7545',
+    name: 'Černý toner',
   },
-  { id: 1, code: 'TZD48sad7BL', count: '2' },
+  { id: 1, code: 'TZD48sad7BL', count: '2', name: 'Modrý toner' },
 ]
 
 function Sklad() {

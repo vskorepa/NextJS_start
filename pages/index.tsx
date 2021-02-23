@@ -12,17 +12,17 @@ function App() {
         <MenuButton
           destination="sklad"
           imgLink="/img/icon.png"
-          label="Papíry HK"
+          label="Sklad 1"
         />
         <MenuButton
           destination="sklad"
           imgLink="/img/icon.png"
-          label="Papíry Ji"
+          label="Sklad 2"
         />
         <MenuButton
           destination="sklad"
-          imgLink="/img/icon.png"
-          label="Papíru Du"
+          imgLink="/img/home.png"
+          label="Sklad 3"
         />
       </div>
     </div>

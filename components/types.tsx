@@ -3,4 +3,5 @@ export type Row = {
   code: string
   description?: string
   count: string
+  name: string
 }

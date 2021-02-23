@@ -1,8 +1,6 @@
 import { FC } from 'react'
 import styled from 'styled-components'
-import styles from './../../styles/Home.module.css'
-import Image from 'next/image'
-
+import Link from 'next/link'
 const NavButtonStyled = styled.button`
   width: 100%;
   font-size: 20px;
@@ -26,12 +24,12 @@ const NavButtonStyled = styled.button`
 
 type NavButtonProps = {
   content: string
-  link?: string
+  link: string
 }
 export const NavButton: FC<NavButtonProps> = ({ content, link }) => {
   return (
-    <a href={link}>
+    <Link href={link}>
       <NavButtonStyled>{content}</NavButtonStyled>
-    </a>
+    </Link>
   )
 }

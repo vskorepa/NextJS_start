@@ -6,7 +6,7 @@ import styled from 'styled-components'
 const AddRow = styled.div`
   background-color: #e21111;
   display: grid;
-  grid-template-columns: 100px auto 50px 70px;
+  grid-template-columns: 200px auto 50px 140px;
   column-gap: 20px;
   padding: 10px;
   font-size: calc(10px + 2vmin);
@@ -23,12 +23,14 @@ export const AddRowItem: FC<AddRowItemProps> = ({ addItem, getNewId }) => {
   const [code, setCode] = useState('')
   const [description, setDescription] = useState('')
   const [count, setCount] = useState('')
+  const [name, setName] = useState('')
   const handlerAddItem = () => {
     const newRow: Row = {
       id: getNewId(),
       code,
       description,
       count,
+      name,
     }
     addItem(newRow)
   }
@@ -36,17 +38,18 @@ export const AddRowItem: FC<AddRowItemProps> = ({ addItem, getNewId }) => {
   return (
     <AddRow className={styles.AddRow}>
       <input value={code} onChange={(e) => setCode(e.target.value)} />
-      <input
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
+      <input value={name} onChange={(e) => setName(e.target.value)} />
+
       <input
         type="number"
         min="1"
         value={count}
         onChange={(e) => setCount(e.target.value)}
       />
-      <button onClick={handlerAddItem}>ADD</button>
+
+      <button onClick={handlerAddItem} className={styles.btn}>
+        Přidat
+      </button>
     </AddRow>
   )
 }

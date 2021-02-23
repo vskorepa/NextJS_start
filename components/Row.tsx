@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css'
 const RowDiv = styled.div`
   background-color: #ff00008e;
   display: grid;
-  grid-template-columns: 200px auto auto 50px 70px;
+  grid-template-columns: 200px auto 50px 50px 70px;
   column-gap: 20px;
   padding: 10px;
   font-size: calc(10px + 2vmin);
@@ -15,7 +15,7 @@ const RowDiv = styled.div`
   :nth-child(even) {
     background-color: #e21111;
     display: grid;
-    grid-template-columns: 200px auto auto 50px 70px;
+    grid-template-columns: 200px auto 50px 50px 70px;
     column-gap: 20px;
     padding: 10px;
     font-size: calc(10px + 2vmin);
@@ -33,15 +33,14 @@ export const Row: FC<RowProps> = ({
   code,
   description,
   count,
+  name,
   deleteItem,
 }) => {
   return (
-    // <div className={"Row" + (id % 2)}>
     <RowDiv>
-      <div className="Row-Code">{code}</div>
-      <div>{id}</div>
-
-      <div className="Row-Count">{count}</div>
+      <div className={styles.RowCode}>{code}</div>
+      <div className={styles.RowCode}>{name}</div>
+      <div className={styles.RowCode}>{count}</div>
       <button className={styles.btn}>Edit</button>
       <button className={styles.btn} onClick={() => deleteItem(id)}>
         smazat

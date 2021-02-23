@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react'
 import { Row } from './types'
 import { Row as RowComponent } from './Row'
 import { AddRowItem } from './AddRow'
+import { RowHead } from './RowHead'
 
 type rowListProps = {
   items: Row[]
@@ -24,7 +25,9 @@ export const RowList: FC<rowListProps> = ({ items: initItems }) => {
 
   return (
     <div>
+      <RowHead></RowHead>
       <AddRowItem addItem={addItem} getNewId={getNewId} />
+
       <div className="rowList">
         {items.map((item) => (
           <RowComponent key={item.id} {...item} deleteItem={deleteItem} />

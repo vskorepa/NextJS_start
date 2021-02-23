@@ -4,6 +4,7 @@ import { useViewerQuery } from '../../lib/viewer.graphql'
 import styles from './../../styles/Home.module.css'
 import Image from 'next/image'
 import { NavButton } from './NavButon'
+import Link from 'next/link'
 
 const SideNav = styled.div`
   height: 100%;
@@ -20,7 +21,7 @@ export const Nav: FC = ({}) => {
   return (
     <>
       <nav className={styles.nav}>
-        <a href="/">
+        <Link href="/">
           <Image
             layout="fixed"
             width={30}
@@ -28,14 +29,14 @@ export const Nav: FC = ({}) => {
             className={styles.homeimg}
             src="/img/home.png"
           ></Image>
-        </a>
+        </Link>
 
         {loading && <>Loading....</>}
         {error && <>Error</>}
         {data && (
-          <a className={styles.logoff}>
+          <Link href="/">
             <p>({data.viewer.name}) odhlásit se</p>
-          </a>
+          </Link>
         )}
       </nav>
       <SideNav>
