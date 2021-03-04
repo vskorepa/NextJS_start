@@ -1,4 +1,6 @@
-fragment Partial on User {
+fragment Partial on Row {
   id
   name
+  description
+  count
 }

@@ -1,7 +1,10 @@
 type Query {
-  viewer: User!
+  row: Row!
+}
+type Query {
+  rows: Rows!
 }
 
 type Mutation {
-  updateName(name: String!): User!
+  updateName(name: String!): Row!
 }

@@ -3,6 +3,12 @@ import { Nav } from '../components/atomic/Nav'
 import { RowList } from './../components/RowList'
 import { Row } from './../components/types'
 import styles from '../styles/Home.module.css'
+import {
+  useRowQuery,
+  useUpdateNameMutation,
+  RowDocument,
+} from '../lib/viewer.graphql'
+import { initializeApollo } from '../lib/apollo'
 
 const fakeData: Array<Row> = [
   {
@@ -15,7 +21,9 @@ const fakeData: Array<Row> = [
   { id: 1, code: 'TZD48sad7BL', count: '2', name: 'Modrý toner' },
 ]
 
-function Sklad() {
+const Sklad = () => {
+  const { data, error } = useRowQuery()
+
   return (
     <>
       <Nav></Nav>

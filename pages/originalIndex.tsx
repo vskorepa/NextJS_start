@@ -1,18 +1,16 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import {
-  useViewerQuery,
+  useRowQuery,
   useUpdateNameMutation,
-  ViewerDocument,
+  RowDocument,
 } from '../lib/viewer.graphql'
 import { initializeApollo } from '../lib/apollo'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-// import { Menu } from '../components/menu'
-import { MenuButton } from '../components/atomic/MenuButton'
 
 const Index = () => {
-  const { data, loading, error } = useViewerQuery()
+  const { data, loading, error } = useRowQuery()
   const [newName, setNewName] = useState('')
   const [updateNameMutation] = useUpdateNameMutation()
 
@@ -30,11 +28,7 @@ const Index = () => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <nav className={styles.nav}>
-        <MenuButton imgLink="/img/logo" label="MENU"></MenuButton>
-        <MenuButton imgLink="/img/logo" label="Sklad 1"></MenuButton>
-        <MenuButton imgLink="/img/logo" label="Sklad 2"></MenuButton>
-      </nav>
+      <nav className={styles.nav}></nav>
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
@@ -45,8 +39,8 @@ const Index = () => {
           {error && <>Error</>}
           {data && (
             <>
-              You're signed in as {data.viewer.name} and you're{' '}
-              {data.viewer.status}. Go to the{' '}
+              You're signed in as {data.row.description} and you're{' '}
+              {data.row.code}. Go to the{' '}
               <Link href="/about">
                 <a>about</a>
               </Link>{' '}
@@ -120,7 +114,7 @@ export async function getStaticProps() {
   const apolloClient = initializeApollo()
 
   await apolloClient.query({
-    query: ViewerDocument,
+    query: RowDocument,
   })
 
   return {
