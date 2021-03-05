@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { useViewerQuery } from '../../lib/viewer.graphql'
 import styles from './../../styles/Home.module.css'
 import Image from 'next/image'
 import { NavButton } from './NavButon'
@@ -16,8 +15,6 @@ const SideNav = styled.div`
 `
 
 export const Nav: FC = ({}) => {
-  const { data, loading, error } = useViewerQuery()
-
   return (
     <>
       <nav className={styles.nav}>
@@ -31,13 +28,9 @@ export const Nav: FC = ({}) => {
           ></Image>
         </Link>
 
-        {loading && <>Loading....</>}
-        {error && <>Error</>}
-        {data && (
-          <Link href="/">
-            <p>({data.viewer.name}) odhlásit se</p>
-          </Link>
-        )}
+        <Link href="/">
+          <p> odhlásit se</p>
+        </Link>
       </nav>
       <SideNav>
         <NavButton link="/" content="SKLADY"></NavButton>

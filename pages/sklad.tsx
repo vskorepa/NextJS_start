@@ -3,25 +3,37 @@ import { Nav } from '../components/atomic/Nav'
 import { RowList } from './../components/RowList'
 import { Row } from './../components/types'
 import styles from '../styles/Home.module.css'
+import {
+  ApolloClient,
+  ApolloProvider,
+  gql,
+  InMemoryCache,
+  useQuery,
+} from '@apollo/client'
 
-const fakeData: Array<Row> = [
+const GET_ROWS = gql`
   {
-    id: 0,
-    code: 'TPRdafsd78PT',
-    count: '7',
-    description: 'Black toner do WC7545',
-    name: 'Černý toner',
-  },
-  { id: 1, code: 'TZD48sad7BL', count: '2', name: 'Modrý toner' },
-]
+    multipleRows {
+      id
+      name
+      code
+      count
+      description
+    }
+  }
+`
 
-function Sklad() {
+const Sklad = () => {
+  const { loading, error, data } = useQuery(GET_ROWS)
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error: {error.message}</p>
+
   return (
     <>
       <Nav></Nav>
       <div className={styles.sklad}>
         <header className="Sklad-header"></header>
-        <RowList items={fakeData}></RowList>
+        <RowList items={data.multipleRows}></RowList>
       </div>
     </>
   )
