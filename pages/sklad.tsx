@@ -3,30 +3,22 @@ import { Nav } from '../components/atomic/Nav'
 import { RowList } from './../components/RowList'
 import { Row } from './../components/types'
 import styles from '../styles/Home.module.css'
-import {
-  ApolloClient,
-  ApolloProvider,
-  gql,
-  InMemoryCache,
-  useQuery,
-} from '@apollo/client'
-
-const GET_ROWS = gql`
-  {
-    multipleRows {
-      id
-      name
-      code
-      count
-      description
-    }
-  }
-`
+import { useMultipleRowsQuery } from '../lib/multipleRows.graphql'
 
 const Sklad = () => {
-  const { loading, error, data } = useQuery(GET_ROWS)
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error: {error.message}</p>
+  const { loading, error, data } = useMultipleRowsQuery()
+  if (loading)
+    return (
+      <>
+        <Nav></Nav>
+      </>
+    )
+  if (error)
+    return (
+      <>
+        <Nav></Nav>
+      </>
+    )
 
   return (
     <>

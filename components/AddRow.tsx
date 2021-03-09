@@ -2,6 +2,8 @@ import React, { FC, useState } from 'react'
 import { Row } from './types'
 import styles from '../styles/Home.module.css'
 import styled from 'styled-components'
+import { useMutation } from '@apollo/client'
+import { useAddSingleRowMutation } from '../__generated__/lib/singleRow.graphql'
 
 const AddRow = styled.div`
   background-color: #e21111;
@@ -20,6 +22,7 @@ type AddRowItemProps = {
 }
 
 export const AddRowItem: FC<AddRowItemProps> = ({ addItem, getNewId }) => {
+  const [row, createRow] = useAddSingleRowMutation()
   const [code, setCode] = useState('')
   const [description, setDescription] = useState('')
   const [count, setCount] = useState('')
