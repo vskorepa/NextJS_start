@@ -1,12 +1,6 @@
 import { QueryResolvers, MutationResolvers } from './type-defs.graphqls'
 import { ResolverContext } from './apollo'
-import console from 'console'
 
-const userProfile = {
-  id: String(1),
-  name: 'John Smith',
-  status: 'cached',
-}
 const rows = [
   {
     id: 0,
@@ -38,9 +32,6 @@ const rows = [
 ]
 
 const Query: Required<QueryResolvers<ResolverContext>> = {
-  viewer(_parent, _args, _context, _info) {
-    return userProfile
-  },
   multipleRows(_parent, _args, _context, _info) {
     return rows
   },
@@ -50,11 +41,6 @@ const Query: Required<QueryResolvers<ResolverContext>> = {
 }
 
 const Mutation: Required<MutationResolvers<ResolverContext>> = {
-  updateName(_parent, _args, _context, _info) {
-    console.log(`setting a new name to ${_args.name}`)
-    userProfile.name = _args.name
-    return userProfile
-  },
   AddSingleRow(_parent, _args, _context, _info) {
     rows.push(_args)
     return _args

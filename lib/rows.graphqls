@@ -1,7 +1,0 @@
-type Rows {
-  id: Int!
-  name: String!
-  code: String!
-  description: String
-  count: Int!
-}

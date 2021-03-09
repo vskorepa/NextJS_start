@@ -1,6 +1,0 @@
-fragment Partial on Row {
-  id
-  name
-  description
-  count
-}

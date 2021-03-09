@@ -1,11 +1,9 @@
 type Query {
-  viewer: User!
   singleRow(id: Int!): Row!
   multipleRows: [Row!]!
 }
 
 type Mutation {
-  updateName(name: String!): User!
   AddSingleRow(
     id: Int!
     name: String!
