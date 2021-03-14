@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useState } from 'react'
 import { Row } from './types'
 import { Row as RowComponent } from './Row'
 import { AddRowItem } from './AddRow'
