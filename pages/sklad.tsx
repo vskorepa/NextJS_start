@@ -1,7 +1,6 @@
 import React from 'react'
 import { Nav } from '../components/atomic/Nav'
 import { RowList } from './../components/RowList'
-import { Row } from './../components/types'
 import styles from '../styles/Home.module.css'
 import { useMultipleRowsQuery } from '../lib/multipleRows.graphql'
 
@@ -10,13 +9,15 @@ const Sklad = () => {
   if (loading)
     return (
       <>
-        <Nav></Nav>
+        <Nav />
+        <h1>Loading...</h1>
       </>
     )
   if (error)
     return (
       <>
-        <Nav></Nav>
+        <Nav />
+        <h1>Error</h1>
       </>
     )
 

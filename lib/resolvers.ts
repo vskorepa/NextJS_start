@@ -27,6 +27,7 @@ const rows = [
     id: 3,
     name: 'Magenta Toner',
     code: 'ZL4015PBDCK',
+    description: 'modrý toner do Xerox WC7545',
     count: 8,
   },
 ]
@@ -42,8 +43,8 @@ const Query: Required<QueryResolvers<ResolverContext>> = {
 
 const Mutation: Required<MutationResolvers<ResolverContext>> = {
   AddSingleRow(_parent, _args, _context, _info) {
-    rows.push(_args)
-    return _args
+    if (!rows.find((x) => x.id === _args.id)) rows.push(_args)
+    return rows.find((row) => row.id === _args.id)
   },
   deleteSingleRow(_parent, _args, _context, _info) {
     rows.filter((x) => x.id !== _args.id)
