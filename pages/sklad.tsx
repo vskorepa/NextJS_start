@@ -1,7 +1,6 @@
 import React from 'react'
 import { Nav } from '../components/atomic/Nav'
 import { RowList } from './../components/RowList'
-import { Row } from './../components/types'
 import styles from '../styles/Home.module.css'
 import { useMultipleRowsQuery } from '../lib/multipleRows.graphql'
 
