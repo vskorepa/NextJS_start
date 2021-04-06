@@ -30,6 +30,5 @@ mutation AddSingleRow(
 mutation DeleteSingleRow($id: Int!) {
   deleteSingleRow(id: $id) {
     id
-    name
   }
 }

@@ -10,12 +10,14 @@ const Sklad = () => {
     return (
       <>
         <Nav></Nav>
+        <h1>Loading...</h1>
       </>
     )
   if (error)
     return (
       <>
         <Nav></Nav>
+        <h1>Error</h1>
       </>
     )
 
