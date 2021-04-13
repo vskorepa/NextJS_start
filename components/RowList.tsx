@@ -13,10 +13,7 @@ type rowListProps = {
   items: Row[]
 }
 export const RowList: FC<rowListProps> = ({ items: initItems }) => {
-  const [
-    addRow,
-    { loading: mutationLoading, error: mutationError },
-  ] = useAddSingleRowMutation()
+  const [addRow] = useAddSingleRowMutation()
   const [deleteRow] = useDeleteSingleRowMutation()
   const [items, setItems] = useState(initItems)
   const [nextId, setNextId] = useState(items.length + 1)
