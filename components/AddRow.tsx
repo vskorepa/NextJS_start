@@ -6,12 +6,13 @@ import styled from 'styled-components'
 const AddRow = styled.div`
   background-color: #e21111;
   display: grid;
-  grid-template-columns: 200px auto 50px 140px;
+  grid-template-columns: 200px auto 100px 140px;
   column-gap: 20px;
   padding: 10px;
   font-size: calc(10px + 2vmin);
   color: white;
   outline: none;
+  padding-top: 50px;
 `
 
 type AddRowItemProps = {

@@ -8,7 +8,7 @@ import Link from 'next/link'
 const SideNav = styled.div`
   height: 100%;
   width: 15%;
-  position: absolute;
+  position: fixed;
   background-color: #282c34;
   padding: 5px;
   overflow: none;

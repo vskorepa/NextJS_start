@@ -14,12 +14,16 @@
 }
 
 .main {
-  padding: 5rem 0;
+  padding-top: 5vh;
+  /* padding: 5rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+}
+.rowlist {
+  padding-top: 6vh;
 }
 
 .footer {
@@ -107,7 +111,7 @@
   outline: none;
 }
 .grid {
-  padding: 10px 10px 10px 17%;
+  padding: 6vh 10px 10px 17%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 0.7fr));
   grid-template-rows: repeat(auto-fill, minmax(250px, 0.7fr));
@@ -178,11 +182,11 @@
   }
 }
 .nav {
-  position: relative;
+  position: fixed;
 
   background-color: #282c34;
   width: 100%;
-  min-height: 4%;
+  height: 5vh;
   z-index: 100;
   padding: 5px;
   display: flex;
