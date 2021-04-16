@@ -36,10 +36,10 @@ export const RowList: FC = ({}) => {
     })
   }
   if (loading) {
-    return <Nav></Nav>
+    return <h1>Loading....</h1>
   }
   if (error) {
-    return <Nav></Nav>
+    return <h1>ERROR</h1>
   } else {
     return (
       <div className={styles.main}>

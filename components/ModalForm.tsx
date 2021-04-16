@@ -5,7 +5,10 @@ import { Row } from '../lib/multipleRows.graphql'
 import styles from '../styles/Home.module.css'
 import styled from 'styled-components'
 import { useAddSingleRowMutation } from '../__generated__/lib/singleRow.graphql'
-import { MultipleRowsDocument } from '../lib/multipleRows.graphql'
+import {
+  MultipleRowsDocument,
+  useMultipleRowsQuery,
+} from '../lib/multipleRows.graphql'
 
 const customStyles = {
   content: {
@@ -45,8 +48,12 @@ const HeadDiv = styled.div`
 
 export const AddRowItem: FC = ({}) => {
   const { register, handleSubmit } = useForm<Row>()
-  const onSubmit = (data: Row) => handlerAddItem(data)
+  const onSubmit = (data: Row) => {
+    handlerAddItem(data)
+    closeModal()
+  }
   const [addRow] = useAddSingleRowMutation()
+  const { data } = useMultipleRowsQuery()
 
   const addItem = async (item: Row) => {
     // setItems([...items, item])
@@ -62,9 +69,12 @@ export const AddRowItem: FC = ({}) => {
     })
   }
 
+  const getNewId = () => {
+    return data.multipleRows.length
+  }
   const handlerAddItem = (data: Row) => {
     const newRow: Row = {
-      id: getNewId,
+      id: getNewId(),
       code: data.code,
       description: data.description,
       count: data.count,
@@ -99,14 +109,19 @@ export const AddRowItem: FC = ({}) => {
         <div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <label>Název</label>
-            <input {...register('name')} />
+            <input type="text" {...register('name')} />
             <label>kód</label>
-            <input {...register('code')} />
+            <input type="text" {...register('code')} />
             <label>popis</label>
-            <input {...register('description')} />
+            <input type="text" {...register('description')} />
             <label>počet</label>
-            <input {...register('count')} />
-            <input hidden {...register('id')} value="" />
+            <input
+              type="number"
+              defaultValue={0}
+              min={0}
+              {...register('count', { valueAsNumber: true })}
+            />
+            <input hidden {...register('id', { valueAsNumber: true })} />
             <input type="submit" />
           </form>{' '}
         </div>
