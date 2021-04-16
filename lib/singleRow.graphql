@@ -25,6 +25,7 @@ mutation AddSingleRow(
     name
     code
     count
+    description
   }
 }
 mutation DeleteSingleRow($id: Int!) {
