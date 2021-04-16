@@ -7,7 +7,6 @@ import {
   useAddSingleRowMutation,
   useDeleteSingleRowMutation,
 } from '../__generated__/lib/singleRow.graphql'
-import { useMultipleRowsQuery } from '../lib/multipleRows.graphql'
 
 type rowListProps = {
   items: Row[]
@@ -19,6 +18,7 @@ export const RowList: FC<rowListProps> = ({ items: initItems }) => {
   const [nextId, setNextId] = useState(items.length + 1)
 
   const addItem = (item: Row) => {
+    setItems([...items, item])
     addRow({
       variables: {
         id: item.id,
@@ -28,30 +28,31 @@ export const RowList: FC<rowListProps> = ({ items: initItems }) => {
         count: item.count,
       },
     })
-    setItems([...items, item])
   }
   const deleteItem = (id: number) => {
+    console.log(id)
+    setItems(items.filter((x) => !!x).filter((x) => x.id !== id))
     deleteRow({
       variables: {
         id: id,
       },
     })
-    setItems(items.filter((x) => x.id !== id))
   }
   const getNewId = () => {
     setNextId(nextId + 1)
     return nextId - 1
   }
-
   return (
     <div>
       <RowHead></RowHead>
       <AddRowItem addItem={addItem} getNewId={getNewId} />
 
       <div className="rowList">
-        {items.map((item) => (
-          <RowComponent key={item.id} {...item} deleteItem={deleteItem} />
-        ))}
+        {items
+          .filter((x) => !!x)
+          .map((item) => (
+            <RowComponent key={item.id} {...item} deleteItem={deleteItem} />
+          ))}
       </div>
     </div>
   )

@@ -18,16 +18,17 @@ const Sklad = () => {
         <Nav></Nav>
       </>
     )
-
-  return (
-    <>
-      <Nav></Nav>
-      <div className={styles.sklad}>
-        <header className="Sklad-header"></header>
-        <RowList items={data.multipleRows}></RowList>
-      </div>
-    </>
-  )
+  else {
+    return (
+      <>
+        <Nav></Nav>
+        <div className={styles.sklad}>
+          <header className="Sklad-header"></header>
+          <RowList items={data.multipleRows}></RowList>
+        </div>
+      </>
+    )
+  }
 }
 
 export default Sklad

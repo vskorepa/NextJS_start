@@ -2,8 +2,6 @@ import React, { FC, useState } from 'react'
 import { Row } from './types'
 import styles from '../styles/Home.module.css'
 import styled from 'styled-components'
-import { useMutation } from '@apollo/client'
-import { useAddSingleRowMutation } from '../__generated__/lib/singleRow.graphql'
 
 const AddRow = styled.div`
   background-color: #e21111;
@@ -22,10 +20,9 @@ type AddRowItemProps = {
 }
 
 export const AddRowItem: FC<AddRowItemProps> = ({ addItem, getNewId }) => {
-  const [row, createRow] = useAddSingleRowMutation()
   const [code, setCode] = useState('')
   const [description, setDescription] = useState('')
-  const [count, setCount] = useState('')
+  const [count, setCount] = useState(0)
   const [name, setName] = useState('')
   const handlerAddItem = () => {
     const newRow: Row = {
@@ -47,7 +44,7 @@ export const AddRowItem: FC<AddRowItemProps> = ({ addItem, getNewId }) => {
         type="number"
         min="1"
         value={count}
-        onChange={(e) => setCount(e.target.value)}
+        onChange={(e) => setCount(e.target.valueAsNumber)}
       />
 
       <button onClick={handlerAddItem} className={styles.btn}>
