@@ -10,17 +10,17 @@ function App() {
       <Nav></Nav>
       <div className={styles.grid}>
         <MenuButton
-          destination="sklad"
+          destination="/sklad"
           imgLink="/img/icon.png"
           label="Sklad 1"
         />
         <MenuButton
-          destination="sklad"
+          destination="/sklad"
           imgLink="/img/icon.png"
           label="Sklad 2"
         />
         <MenuButton
-          destination="sklad"
+          destination="/sklad"
           imgLink="/img/home.png"
           label="Sklad 3"
         />

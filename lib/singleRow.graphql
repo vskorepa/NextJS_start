@@ -4,7 +4,6 @@ query SingleRow($id: Int!) {
     name
     code
     count
-    description
   }
 }
 
@@ -32,6 +31,5 @@ mutation AddSingleRow(
 mutation DeleteSingleRow($id: Int!) {
   deleteSingleRow(id: $id) {
     id
-    name
   }
 }

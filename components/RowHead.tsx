@@ -1,12 +1,10 @@
-import React, { FC, useState } from 'react'
-import { Row } from './types'
-import styles from '../styles/Home.module.css'
+import React, { FC } from 'react'
 import styled from 'styled-components'
-
+import { AddRowItem } from './ModalForm'
 const RowHeadDiv = styled.div`
   background-color: #e21111;
   display: grid;
-  grid-template-columns: 200px auto 50px 50px 70px;
+  grid-template-columns: 200px auto 100px 140px;
   column-gap: 20px;
   height: 40px;
   padding: 10px;
@@ -15,17 +13,18 @@ const RowHeadDiv = styled.div`
   outline: none;
   text-align: center;
   align-content: center;
-  position: relative;
+  position: fixed;
+  width: 85%;
 `
 const RowHeadCode = styled.p``
 const RowHeadCount = styled.p``
-
 export const RowHead: FC = ({}) => {
   return (
     <RowHeadDiv>
       <RowHeadCode>Kód</RowHeadCode>
       <RowHeadCode>Název</RowHeadCode>
       <RowHeadCount>Počet</RowHeadCount>
+      <AddRowItem>Přidat</AddRowItem>
     </RowHeadDiv>
   )
 }
